@@ -1,0 +1,29 @@
+{
+  "name": "startr-sass",
+  "version": "0.0.1",
+  "description": "Package sass // use with boilerplate https://github.com/davidcazalis/starter",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "sass",
+    "boilerplate"
+  ],
+  "authors": [
+    "Axel Viger <screan.me@gmail.com>",
+    "David Cazalis <davidcazalis@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/axelviger/startr-sass.git"
+  },
+  "private": "true",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
