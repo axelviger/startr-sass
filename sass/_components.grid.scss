@@ -1,0 +1,40 @@
+// ========================================= //
+// Components : grid
+// ========================================= //
+
+// grid-row
+// o-grid row generator
+@mixin ad-grid-row() {
+  margin: 0 auto;
+  max-width: $row-width;
+  width: 100%;
+
+  //include clearfix
+  @include ad-clearfix;
+}
+
+// contruct .row
+#{$label-row} {
+  @include ad-grid-row();
+}
+
+// ad-grid-width
+// Set columns width
+@function ad-grid-width($columns, $grid-size) {
+  @return ( percentage( $columns / $grid-size ) );
+};
+
+// grid-column
+// o-grid columns generator
+@mixin ad-grid-column($columns:false) {
+  width: ad-grid-width($columns, $grid-size);
+}
+
+// contruct .col
+#{$label-col} {
+  @for $i from 1 through $grid-size {
+    &#{$label-col}_sm-#{$i} { @include ad-grid-column($columns: $i); }
+    &#{$label-col}_md-#{$i} { @include ad-grid-column($columns: $i); }
+    &#{$label-col}_lg-#{$i} { @include ad-grid-column($columns: $i); }
+  }
+}
