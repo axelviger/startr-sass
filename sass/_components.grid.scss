@@ -20,21 +20,47 @@
 
 // ad-grid-width
 // Set columns width
-@function ad-grid-width($columns, $grid-size) {
+@function ad-col-width($columns, $grid-size) {
   @return ( percentage( $columns / $grid-size ) );
 };
 
 // grid-column
 // o-grid columns generator
 @mixin ad-grid-column($columns:false) {
-  width: ad-grid-width($columns, $grid-size);
+  width: ad-col-width($columns, $grid-size);
 }
 
 // contruct .col
-#{$label-col} {
-  @for $i from 1 through $grid-size {
-    &#{$label-col}_sm-#{$i} { @include ad-grid-column($columns: $i); }
-    &#{$label-col}_md-#{$i} { @include ad-grid-column($columns: $i); }
-    &#{$label-col}_lg-#{$i} { @include ad-grid-column($columns: $i); }
+@mixin ad-grid-generator {
+  #{$label-col} {
+    float: left;
+    padding-left: $column-gutter/2;
+    padding-right: $column-gutter/2;
+
+    // loop from 1 to $grid-zise
+    @for $i from 1 through $grid-size {
+      // for each value in $grid-breakpoints
+      @each $label, $value in $grid-breakpoints {
+        // gird-size
+        &.#{$label}-#{$i} { @include ad-grid-column($columns: $i); }
+
+        // grid-push
+        &.push-#{$label}-#{$i} {
+          position: relative;
+          left: ad-col-width($i, $grid-size);
+        }
+
+        // grid-pull
+        &.pull-#{$label}-#{$i} {
+          position: relative;
+          right: ad-col-width($i, $grid-size);
+        }
+      }
+    }
   }
+}
+
+// initialize grid
+#{$label-row} {
+  @include ad-grid-generator();
 }
