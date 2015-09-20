@@ -14,14 +14,21 @@ $column-gutter:         ad-rem-calc(30px) !default;
 $grid-size:             12 !default;
 
 // Class name
-$label-row:             '.o-grid-row' !default;
-$label-col:             '.o-grid-col' !default;
+$label-row:             '.row' !default;
+$label-col:             '.column' !default;
 
 // Breakpoint
+<<<<<<< HEAD
 // xs : 40em -> 640px
 // xs : 64em -> 1024px
 // xs : 90em -> 1440px
 $ad-breakpoints: (
+=======
+// sm : 40em -> 640px
+// md : 64em -> 1024px
+// lg : 90em -> 1440px
+$grid-breakpoints: (
+>>>>>>> 5ebe80d97dfc80a4a1bc14daa5a889e035538fc6
   sm: 40em,
   md: 64em,
   lg: 90em,
