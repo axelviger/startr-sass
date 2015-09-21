@@ -19,7 +19,7 @@ $_base: $_base-font-size !default;
 @function _rem($values, $base-value: $_base) {
   $max: length($values);
 
-  @if $max == 1 { @return rem-calc(nth($values, 1), $base-value); }
+  @if $max == 1 { @return _rem-calc(nth($values, 1), $base-value); }
 
   $rem-values: ();
   @for $i from 1 through $max {

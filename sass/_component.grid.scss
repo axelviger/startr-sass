@@ -21,7 +21,7 @@ $_grid: $_layout-grid !default;
   @include clearfix();
   margin-left: auto;
   margin-right: auto;
-  max-width: map-get($_grid, width);
+  max-width: _rem(map-get($_grid, width));
 }
 
 // Set columns width
@@ -30,7 +30,7 @@ $_grid: $_layout-grid !default;
 // @param {String} $float [false] - Add float property, left or right
 @mixin grid-col(
   $width: map-get($_grid, columns),
-  $gutter: map-get($_grid, gutters),
+  $gutter: _rem(map-get($_grid, gutters)),
   $float: left) {
 
   @if $float { float: $float; }
@@ -73,6 +73,8 @@ $_grid: $_layout-grid !default;
 .column {
   float: left;
   position: relative;
+  padding-left: _rem(map-get($_grid, gutters));
+  padding-right: _rem(map-get($_grid, gutters));
 
   &:last-child { float: right; }
 }
@@ -108,14 +110,15 @@ $_grid: $_layout-grid !default;
 // For each breakpoint key, generate a grid set
 @each $breakpoint-name, $breakpoint-value in map-get($_grid, breakpoints) {
 
+
   // Mobile first, don't need media query
-  @if $breakpoint-name == small {
+  @if $breakpoint-name ==  small {
     @include grid-set($breakpoint-name);
   }
 
   // Medium breakpoint
   @if $breakpoint-name == medium {
-    @include bp(small) {
+    @include bp(small, medium) {
       @include grid-set($breakpoint-name);
     }
   }
