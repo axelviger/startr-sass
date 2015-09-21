@@ -118,14 +118,14 @@ $_grid: $_layout-grid !default;
 
   // Medium breakpoint
   @if $breakpoint-name == medium {
-    @include bp(small, medium) {
+    @include bp(small) {
       @include grid-set($breakpoint-name);
     }
   }
 
   // Large breakpoint
   @if $breakpoint-name == large {
-    @include bp(large) {
+    @include bp(medium) {
       @include grid-set($breakpoint-name);
     }
   }

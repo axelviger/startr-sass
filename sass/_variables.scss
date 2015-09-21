@@ -2,6 +2,8 @@
 // VARIABLES
 // ==========================================================================
 
+@import 'function.em';
+
 // Base
 // ==========================================================================
 
@@ -12,12 +14,10 @@ $_base-font-size: 16px !default;
 
 // Breakpoints
 $_layout-breakpoints: (
-  small: (640px/16px)*1em,
-  medium: (1024px/16px)*1em,
-  large: (1440px/16px)*1em
+  small: _em(640px),
+  medium: _em(1024px),
+  large: _em(1440px)
 ) !default;
-
-@debug map-get($_layout-breakpoints, small);
 
 // Grid
 $_layout-grid: (
