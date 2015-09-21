@@ -1,0 +1,129 @@
+// ==========================================================================
+// GRID
+// ==========================================================================
+
+$_grid: $_layout-grid !default;
+
+// Reset
+// ==========================================================================
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+// Syntaxic grid
+// ==========================================================================
+
+// Grid row
+@mixin grid-container() {
+  @include clearfix();
+  margin-left: auto;
+  margin-right: auto;
+  max-width: map-get($_grid, width);
+}
+
+// Set columns width
+// @param {Number} $width [12] - The column width
+// @param {Number} $gutter - Size of the column gutter
+// @param {String} $float [false] - Add float property, left or right
+@mixin grid-col(
+  $width: map-get($_grid, columns),
+  $gutter: map-get($_grid, gutters),
+  $float: left) {
+
+  @if $float { float: $float; }
+  @if $gutter {
+    padding-left: $gutter;
+    padding-right: $gutter;
+  }
+  width: percentage($width / map-get($_grid, columns));
+}
+
+// Set columns offset
+// @param {Number} $width [0] - The column width of this offset
+// @param {String} $side [left] - Offset side, left or right
+// @param {Bool} $flow [false] - Classic offset, or a margin based offset
+// @parem {Bool} $relative [true] - Add a relative position property
+@mixin grid-col-offset(
+  $width: 0,
+  $side: left,
+  $flow: false,
+  $relative: true) {
+
+  // Set the offset with margin
+  @if $flow {
+    margin-#{$side}: percentage($width / map-get($_grid, columns));
+  } @else { // Set the offset with left/right
+    @if $relative { position: relative; }
+    #{$side}: percentage($width / map-get($_grid, columns));
+  }
+
+}
+
+// Grid generator
+// ==========================================================================
+
+.row {
+  @include grid-container();
+}
+
+.columns,
+.column {
+  float: left;
+  position: relative;
+
+  &:last-child { float: right; }
+}
+
+// Grid set
+// Create classes for grid columns, offset, pull and push
+// @param {String} $prefix - Class prefix
+@mixin grid-set($prefix) {
+  @for $i from 1 through map-get($_grid, columns) {
+
+    // Columns
+    .#{$prefix}-#{$i} {
+      @include grid-col($i, $gutter: false, $float: false);
+    }
+
+    // Pull
+    .#{$prefix}-pull-#{$i} {
+      @include grid-col-offset($i, $side: right, $relative:false)
+    }
+
+    // Push
+    .#{$prefix}-push-#{$i} {
+      @include grid-col-offset($i, $side: left, $relative:false)
+    }
+
+    // Offset
+    .#{$prefix}-offset-#{$i} {
+      @include grid-col-offset($i, $side: left, $flow: true, $relative:false)
+    }
+  }
+}
+
+// For each breakpoint key, generate a grid set
+@each $breakpoint-name, $breakpoint-value in map-get($_grid, breakpoints) {
+
+  // Mobile first, don't need media query
+  @if $breakpoint-name == small {
+    @include grid-set($breakpoint-name);
+  }
+
+  // Medium breakpoint
+  @if $breakpoint-name == medium {
+    @include bp(small) {
+      @include grid-set($breakpoint-name);
+    }
+  }
+
+  // Large breakpoint
+  @if $breakpoint-name == large {
+    @include bp(large) {
+      @include grid-set($breakpoint-name);
+    }
+  }
+}

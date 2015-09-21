@@ -2,11 +2,7 @@
 // MEDIA QUERIES
 // ==========================================================================
 
-$_breakpoints: (
-  small: 40em,
-  medium: 64em,
-  large: 90em,
-) !default;
+$_breakpoints: $_layout-breakpoints !default;
 
 // Functions
 // ==========================================================================
