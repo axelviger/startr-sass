@@ -4,15 +4,6 @@
 
 $_grid: $_layout-grid !default;
 
-// Reset
-// ==========================================================================
-
-*,
-*:after,
-*:before {
-  box-sizing: border-box;
-}
-
 // Syntaxic grid
 // ==========================================================================
 
@@ -109,7 +100,6 @@ $_grid: $_layout-grid !default;
 
 // For each breakpoint key, generate a grid set
 @each $breakpoint-name, $breakpoint-value in map-get($_grid, breakpoints) {
-
 
   // Mobile first, don't need media query
   @if $breakpoint-name ==  small {
