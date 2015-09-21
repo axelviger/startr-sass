@@ -1,19 +1,27 @@
 // ==========================================================================
-// APP
+// VARIABLES
 // ==========================================================================
 
-@import "variables";
-
-// Functions
+// Base
 // ==========================================================================
-@import 'function.strip-unit';
-@import 'function.rem';
 
-// Utilities
-// ==========================================================================
-@import 'tool.clearfix';
-@import 'tool.media-queries';
+$_base-font-size: 16px !default;
 
-// Components
+// Layout
 // ==========================================================================
-@import 'component.grid';
+
+// Breakpoints
+$_layout-breakpoints: (
+  small: 40em,
+  medium: 64em,
+  large: 90em,
+) !default;
+
+// Grid
+$_layout-grid: (
+  width: 1200px,
+  columns: 12,
+  gutters: 15px,
+  breakpoints: $_layout-breakpoints
+) !default;
+
