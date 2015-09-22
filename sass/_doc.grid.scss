@@ -2,9 +2,9 @@
 // DOC GRID
 // ==========================================================================
 
-$_doc-grid-color: #25c1ff;
-$_doc-grid-color-col: rgba($_doc-grid-color, .5);
-$_doc-grid-color-gutter: rgba($_doc-grid-color, .25);
+$_doc-grid-color: #25c1ff !default;
+$_doc-grid-color-col: rgba($_doc-grid-color, .5) !default;
+$_doc-grid-color-gutter: rgba($_doc-grid-color, .25) !default;
 
 body {
   height: 100%;
