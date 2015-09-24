@@ -1,10 +1,10 @@
 // ==========================================================================
-// DOC GRID
+// DEBUG GRID
 // ==========================================================================
 
-$_doc-grid-color: #25c1ff !default;
-$_doc-grid-color-col: rgba($_doc-grid-color, .5) !default;
-$_doc-grid-color-gutter: rgba($_doc-grid-color, .25) !default;
+$_debug-grid-color: #25c1ff !default;
+$_debug-grid-color-col: rgba($_debug-grid-color, .5) !default;
+$_debug-grid-color-gutter: rgba($_debug-grid-color, .25) !default;
 
 body {
   height: 100%;
@@ -31,17 +31,17 @@ body {
     background-image:
       linear-gradient(
         90deg,
-        $_doc-grid-color-gutter 1px,
+        $_debug-grid-color-gutter 1px,
         transparent 1px
       ),
       linear-gradient(
         90deg,
-        $_doc-grid-color-col 1px,
+        $_debug-grid-color-col 1px,
         transparent 1px
       ),
       linear-gradient(
         90deg,
-        $_doc-grid-color-gutter 1px,
+        $_debug-grid-color-gutter 1px,
         transparent 1px
       );
     background-position:
@@ -58,6 +58,6 @@ body {
   }
 
   &:after {
-    border-right: 1px solid $_doc-grid-color-col;
+    border-right: 1px solid $_debug-grid-color-col;
   }
 }
