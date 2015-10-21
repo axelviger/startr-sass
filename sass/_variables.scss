@@ -2,8 +2,6 @@
 // VARIABLES
 // ==========================================================================
 
-@import 'function.em';
-
 // Color swatch
 $_color-brand: #1e90ff;
 
@@ -59,4 +57,3 @@ $_layout-grid: (
   gutters: 15px,
   breakpoints: $_layout-breakpoints
 ) !default;
-

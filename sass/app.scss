@@ -4,36 +4,32 @@
 
 // Settings
 // ==========================================================================
-
 @import 'variables';
 
 // Functions
 // ==========================================================================
-
 @import 'function.strip-unit';
 @import 'function.em';
 @import 'function.rem';
 
+// Utilities
+// ==========================================================================
+@import 'tool.clearfix';
+@import 'tool.media-queries';
+@import 'tool.font-face';
+
 // Base
 // ==========================================================================
-
 @import 'base.reset';
 @import 'base.box-sizing';
 @import 'base.typography';
 @import 'base.tables';
-
-// Utilities
-// ==========================================================================
-
-@import 'tool.clearfix';
-@import 'tool.media-queries';
+@import 'base.forms';
 
 // Components
 // ==========================================================================
-
 @import 'component.grid';
 
 // Debug
 // ==========================================================================
-
 // @import 'debug.grid';
